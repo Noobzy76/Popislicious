@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popislicious — Love at First Crunch 🌯</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD166;
+    --yellow-light: #FFF3CC;
+    --yellow-pale: #FFFBEE;
+    --green: #B5D99C;
+    --green-dark: #7BBF6A;
+    --green-pale: #E8F5E0;
+    --orange: #F4845F;
+    --red-heart: #E05C5C;
+    --cream: #FFF8E7;
+    --brown: #8B5E3C;
+    --text-dark: #3D2B1F;
+    --text-mid: #6B4C35;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* === NAVBAR === */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: var(--yellow);
+    border-bottom: 3px solid var(--orange);
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+  }
+
+  .nav-logo span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--text-dark);
+    background: var(--white);
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+    padding: 4px 12px;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover {
+    background: var(--orange);
+    color: white;
+  }
+
+  /* === HERO === */
+  #hero {
+    min-height: 100vh;
+    background: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: radial-gradient(circle, #8B5E3C 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .floating-deco {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatY 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .floating-deco:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+  .floating-deco:nth-child(2) { top: 25%; right: 10%; animation-delay: 0.5s; }
+  .floating-deco:nth-child(3) { bottom: 20%; left: 12%; animation-delay: 1s; }
+  .floating-deco:nth-child(4) { bottom: 30%; right: 8%; animation-delay: 1.5s; }
+  .floating-deco:nth-child(5) { top: 60%; left: 5%; animation-delay: 2s; }
+  .floating-deco:nth-child(6) { top: 40%; right: 5%; animation-delay: 0.8s; }
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-badge {
+    background: var(--orange);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.9rem;
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    display: inline-block;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0 var(--red-heart);
+  }
+
+  .hero-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 4px 4px 0 rgba(255,255,255,0.4);
+  }
+
+  .hero-title span { color: var(--orange); }
+
+  .hero-tagline {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-mid);
+    margin-bottom: 30px;
+  }
+
+  .hero-card {
+    background: white;
+    border: 3px solid var(--orange);
+    border-radius: 24px;
+    padding: 24px 36px;
+    display: inline-flex;
+    gap: 40px;
+    box-shadow: 6px 6px 0 var(--orange);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    color: var(--orange);
+    display: block;
+  }
+  .hero-stat .lbl {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .scroll-hint {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    font-weight: 700;
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* === SECTIONS === */
+  section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-wrapper {
+    padding: 60px 0;
+  }
+
+  .section-wrapper:nth-child(even) {
+    background: var(--yellow-pale);
+  }
+
+  .section-wrapper.green-bg {
+    background: var(--green-pale);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-number {
+    display: inline-block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.85rem;
+    background: var(--orange);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--text-dark);
+  }
+
+  .section-title .accent { color: var(--orange); }
+
+  .section-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--yellow);
+    border-radius: 4px;
+    margin: 12px auto 0;
+  }
+
+  /* === CARDS === */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: white;
+    border: 2.5px solid var(--yellow);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 5px 5px 0 var(--yellow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 var(--yellow);
+  }
+
+  .card.green {
+    border-color: var(--green-dark);
+    box-shadow: 5px 5px 0 var(--green-dark);
+  }
+  .card.green:hover { box-shadow: 8px 8px 0 var(--green-dark); }
+
+  .card.orange {
+    border-color: var(--orange);
+    box-shadow: 5px 5px 0 var(--orange);
+  }
+  .card.orange:hover { box-shadow: 8px 8px 0 var(--orange); }
+
+  .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-mid);
+  }
+
+  /* === TEAM === */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .team-card {
+    background: white;
+    border: 2.5px solid var(--yellow);
+    border-radius: 20px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 4px 4px 0 var(--yellow);
+    transition: transform 0.2s;
+  }
+
+  .team-card:hover { transform: translateY(-5px); }
+
+  .team-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--yellow);
+    border: 3px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 12px;
+  }
+
+  .team-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    font-weight: 700;
+    background: var(--yellow-light);
+    border-radius: 10px;
+    padding: 2px 10px;
+    display: inline-block;
+  }
+
+  /* === PROMO METHODS === */
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .promo-item {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid var(--green);
+    box-shadow: 4px 4px 0 var(--green-dark);
+    transition: transform 0.2s;
+  }
+  .promo-item:hover { transform: translateY(-4px); }
+  .promo-item .icon { font-size: 2.5rem; margin-bottom: 10px; }
+  .promo-item h4 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+  .promo-item p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* === ACHIEVEMENTS === */
+  .achievement-banner {
+    background: var(--orange);
+    border-radius: 20px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    box-shadow: 6px 6px 0 var(--red-heart);
+  }
+
+  .ach-stat {
+    text-align: center;
+    color: white;
+  }
+
+  .ach-stat .big {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+    display: block;
+  }
+
+  .ach-stat .small {
+    font-size: 0.82rem;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  /* === FINANCE === */
+  .finance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+
+  .finance-table th {
+    background: var(--yellow);
+    color: var(--text-dark);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    padding: 12px 16px;
+    text-align: left;
+    border: 2px solid var(--orange);
+  }
+
+  .finance-table td {
+    padding: 10px 16px;
+    border: 2px solid var(--yellow);
+    color: var(--text-mid);
+    background: white;
+  }
+
+  .finance-table tr:nth-child(even) td { background: var(--yellow-pale); }
+
+  .finance-table .total-row td {
+    background: var(--green-pale);
+    font-weight: 800;
+    color: var(--green-dark);
+    border-color: var(--green-dark);
+  }
+
+  .finance-box {
+    background: white;
+    border: 2.5px solid var(--yellow);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 4px 4px 0 var(--yellow);
+    margin-top: 24px;
+  }
+
+  .finance-box h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    color: var(--text-dark);
+  }
+
+  /* === PROBLEMS & SOLUTIONS === */
+  .ps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 640px) { .ps-grid { grid-template-columns: 1fr; } }
+
+  .ps-box {
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .ps-box.problem {
+    background: #FFF0F0;
+    border: 2.5px solid #E05C5C;
+    box-shadow: 4px 4px 0 #E05C5C;
+  }
+
+  .ps-box.solution {
+    background: var(--green-pale);
+    border: 2.5px solid var(--green-dark);
+    box-shadow: 4px 4px 0 var(--green-dark);
+  }
+
+  .ps-box h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ps-box ul {
+    padding-left: 18px;
+  }
+
+  .ps-box ul li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  /* === SUGGESTIONS === */
+  .suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .suggestion-item {
+    background: white;
+    border: 2px solid var(--yellow);
+    border-left: 6px solid var(--orange);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .suggestion-item .num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--orange);
+    min-width: 30px;
+  }
+
+  .suggestion-item p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* === APPENDIX === */
+  .appendix-placeholder {
+    background: white;
+    border: 2.5px dashed var(--yellow);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    color: var(--text-mid);
+  }
+
+  .appendix-placeholder .big-icon { font-size: 3rem; margin-bottom: 12px; }
+  .appendix-placeholder h4 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .appendix-placeholder p { font-size: 0.88rem; }
+
+  .appendix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .appendix-card {
+    background: white;
+    border: 2px solid var(--green);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 3px 3px 0 var(--green-dark);
+  }
+
+  .appendix-card .icon { font-size: 2rem; margin-bottom: 8px; }
+  .appendix-card h5 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .appendix-card p { font-size: 0.78rem; color: var(--text-mid); }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--text-dark);
+    color: var(--yellow-light);
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  footer .footer-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+
+  footer .footer-tagline {
+    font-family: 'Pacifico', cursive;
+    font-size: 0.95rem;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  footer p {
+    font-size: 0.82rem;
+    opacity: 0.6;
+  }
+
+  /* === MISC HELPERS === */
+  .pill {
+    display: inline-block;
+    background: var(--yellow-light);
+    border: 1.5px solid var(--yellow);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    margin: 3px;
+  }
+
+  .pill.green { background: var(--green-pale); border-color: var(--green-dark); color: var(--green-dark); }
+  .pill.orange { background: #FFF0E8; border-color: var(--orange); color: var(--orange); }
+
+  .highlight-box {
+    background: var(--yellow);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    border: 2px solid var(--orange);
+  }
+
+  .highlight-box p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .two-col { grid-template-columns: 1fr; }
+    nav { padding: 8px 16px; }
+    .nav-links { display: none; }
+    .hero-card { gap: 20px; }
+  }
+
+  /* === SECTION FADE-IN === */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* scroll to top btn */
+  #scrollTop {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--red-heart);
+    display: none;
+    z-index: 998;
+    transition: transform 0.2s;
+  }
+  #scrollTop:hover { transform: translateY(-3px); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Popis<span>licious</span> 🌯</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#promo">Promotion</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#finance">Finance</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#suggestions">Suggestions</a></li>
+    <li><a href="#appendix">Appendix</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg-pattern"></div>
+  <span class="floating-deco">🌯</span>
+  <span class="floating-deco">⭐</span>
+  <span class="floating-deco">🍃</span>
+  <span class="floating-deco">✨</span>
+  <span class="floating-deco">💛</span>
+
+  <div class="hero-badge">📋 Ekspo APK Practicum Report</div>
+  <h1 class="hero-title">Popis<span>licious</span></h1>
+  <p class="hero-tagline">"Love at First Crunch" 🌯</p>
+
+  <div class="hero-card">
+    <div class="hero-stat">
+      <span class="num">300+</span>
+      <span class="lbl">Followers</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">RM5</span>
+      <span class="lbl">Per Popia</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">18</span>
+      <span class="lbl">Posts</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">UMS</span>
+      <span class="lbl">Campus</span>
+    </div>
+  </div>
+
+  <p class="scroll-hint">↓ Scroll to explore our journey ↓</p>
+</div>
+
+<!-- ===================== SECTION 1: ABOUT ===================== -->
+<div class="section-wrapper" id="about">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 1</span>
+      <h2 class="section-title">About <span class="accent">Popislicious</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid">
+      <div class="card orange">
+        <img src="star.png" alt="logostar" width="50" height="60">
+        <h3 class="card-title">Our Business</h3>
+        <p>Popislicious is a food-based business practicum focused on selling freshly made <strong>popia goreng</strong> (fried spring rolls) at UMS campus. We offer a crunchy, affordable, and delicious snack loved by students and staff alike.</p>
+        <br>
+        <p><span class="pill orange">Food & Beverage</span> <span class="pill orange">Snack / Street Food</span></p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <h3 class="card-title">Our Products & Services</h3>
+        <p>We sell two main product sizes:</p>
+        <br>
+        <ul style="padding-left:16px; color:var(--text-mid); font-size:0.88rem; line-height:1.8;">
+          <li>🌯 <strong>5 pieces</strong> — RM5 (Original, No Toppings)</li>
+          <li>🌯 <strong>10 pieces</strong> — RM9</li>
+          <li>🧁 <strong>Toppings +RM1</strong> — Milky Choco / Matcha Glaze / Sweet Cheese</li>
+          <li>🎉 <strong>Mix Toppings +RM1.50</strong></li>
+        </ul>
+        <br>
+        <p>We also offer <strong>delivery</strong> (COD) and <strong>pop-up booth</strong> events on campus.</p>
+      </div>
+
+      <div class="card green">
+        <span class="card-icon">🏫</span>
+        <h3 class="card-title">Industry & Context</h3>
+        <p>This business was conducted as part of the <strong>Ekspo APK</strong> practicum under UMS, Group 9, Section 5 APK. The practicum simulates real-world entrepreneurship through hands-on product selling, marketing, and financial management.</p>
+        <br>
+        <p><span class="pill green">Practicum</span> <span class="pill green">Entrepreneurship</span> <span class="pill green">UMS 2026</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 2: TEAM ===================== -->
+<div class="section-wrapper" id="team">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 2</span>
+      <h2 class="section-title">Meet the <span class="accent">Team</span></h2>
+      <div class="section-divider"></div>
+      <p style="margin-top:12px; color:var(--text-mid); font-size:0.9rem;">The amazing people behind every crunchy bite 💛</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Member Name 1</div>
+        <div class="team-role">Group Leader</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨</div>
+        <div class="team-name">Member Name 2</div>
+        <div class="team-role">Marketing</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Member Name 3</div>
+        <div class="team-role">Finance</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨</div>
+        <div class="team-name">Member Name 4</div>
+        <div class="team-role">Operations</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Member Name 5</div>
+        <div class="team-role">Content Creator</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:30px;">
+      <p>🏫 <strong>Group 9 | Section 5 APK | Universiti Malaysia Sabah (UMS)</strong><br>
+      All members contributed equally to the success of Popislicious — from preparing the popia, managing sales, to creating social media content and handling deliveries.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 3: PROMOTION ===================== -->
+<div class="section-wrapper green-bg" id="promo">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 3</span>
+      <h2 class="section-title">How We <span class="accent">Promoted</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="promo-grid">
+      <div class="promo-item">
+        <div class="icon">📸</div>
+        <h4>Instagram</h4>
+        <p>Posted teasers, hard-sell and soft-sell content on <strong>@popislicious</strong>. Grew to 300+ followers through consistent posting and engaging visuals.</p>
+      </div>
+      <div class="promo-item">
+        <div class="icon">💬</div>
+        <h4>WhatsApp</h4>
+        <p>Used WhatsApp status updates and group chats to reach classmates and friends. Accepted preorders via WhatsApp DM.</p>
+      </div>
+      <div class="promo-item">
+        <div class="icon">👥</div>
+        <h4>Facebook</h4>
+        <p>Shared posts on Facebook to reach a wider campus audience including lecturers and older students.</p>
+      </div>
+      <div class="promo-item">
+        <div class="icon">🗣️</div>
+        <h4>Word of Mouth</h4>
+        <p>Happy customers referred us to their friends, which became one of our most effective organic growth channels.</p>
+      </div>
+      <div class="promo-item">
+        <div class="icon">🛒</div>
+        <h4>Pop-Up Booth</h4>
+        <p>Set up a physical booth at <strong>Gazebo FPPS</strong> from <strong>12pm–3pm</strong> on event day, attracting walk-in customers and live sales.</p>
+      </div>
+      <div class="promo-item">
+        <div class="icon">🎨</div>
+        <h4>Digital Posters</h4>
+        <p>Created eye-catching digital promotional posters with our brand aesthetic to announce new flavours, preorders, and booth dates.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:30px; background: white; border-color: var(--green-dark);">
+      <p>📣 <strong>Content Strategy:</strong> We used a mix of <em>teaser posts</em> (build anticipation), <em>hard-sell posts</em> (direct product promotion with price), and <em>soft-sell posts</em> (lifestyle, behind-the-scenes, customer features) to keep our audience engaged without feeling overwhelmed by promotions.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 4: ACHIEVEMENTS ===================== -->
+<div class="section-wrapper" id="achievements">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 4</span>
+      <h2 class="section-title">Our <span class="accent">Achievements</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="achievement-banner">
+      <div class="ach-stat">
+        <span class="big">300+</span>
+        <span class="small">Instagram Followers</span>
+      </div>
+      <div class="ach-stat">
+        <span class="big">18</span>
+        <span class="small">Posts Published</span>
+      </div>
+      <div class="ach-stat">
+        <span class="big">RM__</span>
+        <span class="small">Total Sales</span>
+      </div>
+      <div class="ach-stat">
+        <span class="big">✅</span>
+        <span class="small">Goals Achieved</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card orange">
+        <span class="card-icon">🎯</span>
+        <h3 class="card-title">Goals & Objectives</h3>
+        <ul style="padding-left:16px; color:var(--text-mid); font-size:0.88rem; line-height:1.9;">
+          <li>✅ Successfully set up a pop-up booth at Gazebo FPPS</li>
+          <li>✅ Reached 300+ Instagram followers milestone</li>
+          <li>✅ Launched preorder system and delivery service</li>
+          <li>✅ Built consistent brand identity across social media</li>
+          <li>✅ Sold products during Ekspo APK event day</li>
+        </ul>
+      </div>
+
+      <div class="card green">
+        <span class="card-icon">💬</span>
+        <h3 class="card-title">Customer Feedback</h3>
+        <ul style="padding-left:16px; color:var(--text-mid); font-size:0.88rem; line-height:1.9;">
+          <li>⭐ "Super crunchy and affordable!"</li>
+          <li>⭐ "Love the matcha glaze topping"</li>
+          <li>⭐ "Packaging was cute and neat"</li>
+          <li>⭐ "Will definitely preorder again"</li>
+          <li>⭐ "Delivery was fast and on time"</li>
+        </ul>
+        <p style="font-size:0.78rem; margin-top:12px; color:var(--text-mid);"><em>(Replace with actual feedback screenshots in Appendix)</em></p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <span class="card-icon">📱</span>
+      <h3 class="card-title">Social Media Engagement</h3>
+      <p>Our <strong>@popislicious</strong> Instagram account gained strong traction through consistent posting. The milestone of <strong>300 followers</strong> was a major achievement celebrated with a dedicated thank-you post. Our content mix of teaser, soft-sell, and hard-sell posts helped maintain high engagement rates throughout the practicum period.</p>
+      <br>
+      <p><span class="pill">Instagram</span> <span class="pill">Facebook</span> <span class="pill">WhatsApp</span></p>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 5: FINANCE ===================== -->
+<div class="section-wrapper green-bg" id="finance">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 5</span>
+      <h2 class="section-title">Financial <span class="accent">Management</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="finance-box">
+          <h4>💰 Income Statement (Summary)</h4>
+          <table class="finance-table">
+            <thead>
+              <tr><th>Item</th><th>Amount (RM)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Total Revenue (Sales)</td><td>RM ____</td></tr>
+              <tr><td>Cost of Goods Sold (COGS)</td><td>RM ____</td></tr>
+              <tr><td>Gross Profit</td><td>RM ____</td></tr>
+              <tr><td>Operating Expenses</td><td>RM ____</td></tr>
+              <tr class="total-row"><td><strong>Net Profit</strong></td><td><strong>RM ____</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.75rem; margin-top:10px; color:var(--text-mid);">⚠️ Replace with actual figures from your records.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="finance-box">
+          <h4>📊 Break-Even Analysis</h4>
+          <table class="finance-table">
+            <thead>
+              <tr><th>Component</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Fixed Costs</td><td>RM ____</td></tr>
+              <tr><td>Selling Price per unit</td><td>RM 5.00</td></tr>
+              <tr><td>Variable Cost per unit</td><td>RM ____</td></tr>
+              <tr><td>Contribution Margin</td><td>RM ____</td></tr>
+              <tr class="total-row"><td><strong>Break-Even Units</strong></td><td><strong>____ units</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin-top:20px;">💵 Pricing Summary</h4>
+          <table class="finance-table">
+            <thead>
+              <tr><th>Product</th><th>Price</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Popia 5pcs (Original)</td><td>RM 5.00</td></tr>
+              <tr><td>Popia 10pcs</td><td>RM 9.00</td></tr>
+              <tr><td>Toppings Add-on</td><td>+RM 1.00</td></tr>
+              <tr><td>Mix Toppings Add-on</td><td>+RM 1.50</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px; border-color: var(--green-dark); box-shadow: 5px 5px 0 var(--green-dark);">
+      <span class="card-icon">📦</span>
+      <h3 class="card-title">Delivery Charges (COD)</h3>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;">
+        <div style="flex:1; min-width:150px; background:var(--yellow-pale); border-radius:12px; padding:14px; text-align:center;">
+          <div style="font-family:'Fredoka One',cursive; font-size:1.1rem;">Around UMS</div>
+          <div style="color:var(--orange); font-weight:800; font-size:1.3rem;">+RM1</div>
+        </div>
+        <div style="flex:1; min-width:150px; background:var(--yellow-pale); border-radius:12px; padding:14px; text-align:center;">
+          <div style="font-family:'Fredoka One',cursive; font-size:1.1rem;">Around IB</div>
+          <div style="color:var(--orange); font-weight:800; font-size:1.3rem;">+RM1.50</div>
+        </div>
+        <div style="flex:1; min-width:150px; background:var(--green-pale); border-radius:12px; padding:14px; text-align:center;">
+          <div style="font-family:'Fredoka One',cursive; font-size:1.1rem;">Self Pick-Up (FPPS Foyer)</div>
+          <div style="color:var(--green-dark); font-weight:800; font-size:1.3rem;">FREE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 6: PROBLEMS ===================== -->
+<div class="section-wrapper" id="challenges">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 6</span>
+      <h2 class="section-title">Challenges & <span class="accent">Solutions</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="ps-grid">
+      <div class="ps-box problem">
+        <h4 style="color:#C0392B;">❗ Problems We Faced</h4>
+        <ul>
+          <li>Managing preorder demand — high order volume made it difficult to prepare enough stock on time.</li>
+          <li>Coordinating delivery schedules with busy class schedules of all group members.</li>
+          <li>Limited budget for initial ingredient purchases, affecting batch size.</li>
+          <li>Getting consistent social media engagement in the early stages of the account.</li>
+          <li>Weather and venue conditions affecting our pop-up booth setup.</li>
+        </ul>
+      </div>
+
+      <div class="ps-box solution">
+        <h4 style="color:var(--green-dark);">✅ Our Solutions</h4>
+        <ul>
+          <li>Implemented a preorder cut-off system via WhatsApp to control demand and prepare stock in advance.</li>
+          <li>Created a delivery roster assigning specific members to delivery duties each day.</li>
+          <li>Pooled group member funds initially and tracked expenses carefully to manage budget.</li>
+          <li>Used a mix of content strategies — reels, stories, and interactive polls — to boost engagement.</li>
+          <li>Prepared a backup indoor location and brought a portable pop-up tent for weather contingencies.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 7: SUGGESTIONS ===================== -->
+<div class="section-wrapper green-bg" id="suggestions">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Section 7</span>
+      <h2 class="section-title">Suggestions & <span class="accent">Recommendations</span></h2>
+      <div class="section-divider"></div>
+      <p style="margin-top:12px; color:var(--text-mid); font-size:0.9rem;">What we'd do better next time 🌱</p>
+    </div>
+
+    <div class="suggestions-list">
+      <div class="suggestion-item">
+        <div class="num">01</div>
+        <p><strong>Expand to e-commerce platforms</strong> such as Shopee or GrabFood to reach a wider customer base beyond campus, enabling more consistent revenue and easier order management.</p>
+      </div>
+      <div class="suggestion-item">
+        <div class="num">02</div>
+        <p><strong>Introduce loyalty rewards</strong> for repeat customers (e.g., "Buy 5, get 1 free" punch cards) to improve customer retention and encourage word-of-mouth marketing.</p>
+      </div>
+      <div class="suggestion-item">
+        <div class="num">03</div>
+        <p><strong>Improve financial tracking</strong> by using a simple digital spreadsheet or app (like Wave) from day one, making it easier to generate accurate income statements and break-even analysis.</p>
+      </div>
+      <div class="suggestion-item">
+        <div class="num">04</div>
+        <p><strong>Create video content (Reels/TikTok)</strong> showing the preparation process and taste reactions. Video content consistently outperforms static posts in reach and engagement.</p>
+      </div>
+      <div class="suggestion-item">
+        <div class="num">05</div>
+        <p><strong>Plan booth events earlier</strong> and secure bookings in advance to get better locations and avoid last-minute setup issues. Consider partnering with other student groups for joint events.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SECTION 8: APPENDIX ===================== -->
+<div class="section-wrapper" id="appendix">
+  <section class="fade-in">
+    <div class="section-header">
+      <span class="section-number">Appendix</span>
+      <h2 class="section-title">Supporting <span class="accent">Materials</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="appendix-placeholder">
+      <div class="big-icon">📁</div>
+      <h4>Screenshots & Supporting Documents</h4>
+      <p>This section contains social media screenshots, insights, customer feedback, and other supporting evidence. Add your actual screenshots here.</p>
+    </div>
+
+    <div class="appendix-grid">
+      <div class="appendix-card">
+        <div class="icon">📸</div>
+        <h5>Instagram Insights</h5>
+        <p>Follower growth, reach, impressions, and engagement rate screenshots from @popislicious</p>
+      </div>
+      <div class="appendix-card">
+        <div class="icon">🛍️</div>
+        <h5>Social Media Posts</h5>
+        <p>Screenshots of teaser posts, hard-sell posts, and soft-sell posts published during the practicum</p>
+      </div>
+      <div class="appendix-card">
+        <div class="icon">💬</div>
+        <h5>Customer Feedback</h5>
+        <p>Screenshots of positive reviews, DMs, and comments received from satisfied customers</p>
+      </div>
+      <div class="appendix-card">
+        <div class="icon">📊</div>
+        <h5>Sales Records</h5>
+        <p>Order logs, delivery records, and daily sales data from preorder and booth sales</p>
+      </div>
+      <div class="appendix-card">
+        <div class="icon">💰</div>
+        <h5>Financial Documents</h5>
+        <p>Receipt photos, expense tracking sheets, income statement, and cash flow records</p>
+      </div>
+      <div class="appendix-card">
+        <div class="icon">🎪</div>
+        <h5>Booth Event Photos</h5>
+        <p>Photos from the pop-up booth at Gazebo FPPS on 13/05/2026 and other event appearances</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Popislicious 🌯</div>
+  <div class="footer-tagline">"Love at First Crunch"</div>
+  <p>Group 9 | Section 5 APK | Universiti Malaysia Sabah</p>
+  <p style="margin-top:8px;">Ekspo APK Practicum Report · 2026</p>
+  <p style="margin-top:4px;">📸 @popislicious &nbsp;|&nbsp; 📘 popisliciousfb &nbsp;|&nbsp; 👤 popislicious</p>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Scroll to top button
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
